@@ -1,0 +1,3 @@
+with market as(select max(e.salary) as MarketSalary from db_employee e inner join db_dept d on e.department_id = d.id where d.department = 'marketing'),
+eng as(select max(e.salary) as EngSalary from db_employee e inner join db_dept d on e.department_id = d.id where d.department = 'engineering')
+select abs(MarketSalary - EngSalary) as salary_difference from market, eng
